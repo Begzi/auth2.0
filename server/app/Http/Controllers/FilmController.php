@@ -28,8 +28,6 @@ class FilmController extends Controller
     public function index()
     {
         $films = Film::paginate(2);
-        dump(get_class_methods($films));
-        dd($films);
         return view('films.index', compact('films'));
     }
     /**
