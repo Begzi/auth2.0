@@ -3,10 +3,16 @@
 
 @section('content')
 
-    <div class="page-wrapper">
+    <div class="page-wrapper" style="padding-top: 10px;">
         <div class="card-header">
             <h3 class="card-title">Список фильмов</h3>
         </div>
+
+        @if (session()->has('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="films-build">
 
             @if (count($films))
@@ -19,7 +25,6 @@
                                     {{ $film->name }}
                                 </a>
                             </h4>
-                            <h4>{{ $film->name }}</h4>
                             <small>Год выхода фильма: {{ $film->date }}</small>
                             <br>
                             <small>{{ $film->description }}</small>

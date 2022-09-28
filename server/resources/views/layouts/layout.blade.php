@@ -15,11 +15,10 @@
 
 
 
-</head>
 <body>
 
 
-    <section id="cta" class="section">
+    <section id="cta" class="section" style="padding-bottom: 10px;">
         <div class="row">
             <div class="col-lg-2 col-md-12 align-self-center">
                 <h1>Header</h1>
@@ -40,8 +39,10 @@
     </section>
 
     <hr class="invis">
-
-    <div class="container">
+    <br>
+    <br>
+    <br>
+    <div class="container" style="padding-top: 10px;">
         
         @yield('content')
     </div>

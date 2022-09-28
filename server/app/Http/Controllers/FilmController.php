@@ -21,13 +21,15 @@ class FilmController extends Controller
     }
     public function favoriteShow()
     {
-        $favoriteLists = FavoriteList::with('film')->where('user_id', auth()->user()->id)->paginate(10);
+        $favoriteLists = FavoriteList::with('film')->where('user_id', auth()->user()->id)->paginate(2);
         
         return view('films.favorite', compact('favoriteLists'));
     }
     public function index()
     {
-        $films = Film::paginate(10);
+        $films = Film::paginate(2);
+        dump(get_class_methods($films));
+        dd($films);
         return view('films.index', compact('films'));
     }
     /**
@@ -105,7 +107,6 @@ class FilmController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**

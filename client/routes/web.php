@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Redirect;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FilmController@home')->name('home');
+Route::resource('/films', 'FilmController')->middleware('token');
+Route::get('/films/{film}', 'FilmController@show')->name('films.show');
+
+Route::get('/login', 'FilmController@login')->name('login');
+Route::get('/logout', 'FilmController@logout')->name('logout')->middleware('token');
+Route::get('/endpoint', 'FilmController@endpoint')->name('endpoint')->middleware('token');
+Route::get('/loginForm', 
+    function(){
+        return Redirect::to('http://php-laravel-server.com/api/login?request_uri=http://php-laravel-client.com/login');
+    })->name('loginForm');
